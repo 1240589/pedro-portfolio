@@ -295,6 +295,14 @@ function AppContent() {
       {/* Contact Section */}
       <section className="py-20 px-4 bg-slate-800/30">
         <div className="max-w-4xl mx-auto">
+          <div className="mb-8 p-4 bg-yellow-500/20 border border-yellow-500/50 rounded-lg">
+            <div className="flex items-center gap-3 text-yellow-400">
+              <Coffee size={20} />
+              <p className="font-medium">
+                The contact form is temporarily unavailable. Please reach out via email or social media instead.
+              </p>
+            </div>
+          </div>
           <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-teal-400 text-transparent bg-clip-text">
             Let's Connect
           </h2>
