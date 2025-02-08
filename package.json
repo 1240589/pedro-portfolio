@@ -1,12 +1,11 @@
 {
   "name": "vite-react-typescript-starter",
-  "homepage": "https://1240589.github.io/pedro-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
