@@ -295,14 +295,6 @@ function AppContent() {
       {/* Contact Section */}
       <section className="py-20 px-4 bg-slate-800/30">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-8 p-4 bg-yellow-500/20 border border-yellow-500/50 rounded-lg">
-            <div className="flex items-center gap-3 text-yellow-400">
-              <Coffee size={20} />
-              <p className="font-medium">
-                The contact form is temporarily unavailable. Please reach out via email or social media instead.
-              </p>
-            </div>
-          </div>
           <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-teal-400 text-transparent bg-clip-text">
             Let's Connect
           </h2>
@@ -373,9 +365,20 @@ function AppContent() {
                 type="submit"
                 disabled={isSubmitting}
                 className={`w-full py-3 rounded-lg bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold 
-                  hover:from-blue-600 hover:to-teal-600 transition-colors ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  transform transition-all duration-200 
+                  hover:from-blue-600 hover:to-teal-600 
+                  hover:scale-[1.02] 
+                  active:scale-[0.98] 
+                  ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    <span>Sending...</span>
+                  </div>
+                ) : (
+                  'Send Message'
+                )}
               </button>
             </form>
           </div>

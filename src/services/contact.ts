@@ -6,7 +6,6 @@ interface ContactForm {
   message: string;
 }
 
-// Initialize EmailJS
 emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
 export async function submitContactForm(data: ContactForm) {
@@ -15,18 +14,23 @@ export async function submitContactForm(data: ContactForm) {
       from_name: data.name,
       reply_to: data.email,
       message: data.message,
+      to_name: 'Pedro Cruz', // Add your name here
     };
 
     const response = await emailjs.send(
       import.meta.env.VITE_EMAILJS_SERVICE_ID,
       import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      templateParams
+      templateParams,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Add this for faster authentication
     );
 
-    console.log('SUCCESS!', response.status, response.text);
-    return { message: 'Email sent successfully!' };
+    if (response.status === 200) {
+      return { success: true, message: 'Message sent successfully!' };
+    } else {
+      throw new Error('Failed to send message');
+    }
   } catch (error) {
-    console.error('FAILED...', error);
+    console.error('Email send error:', error);
     throw new Error('Failed to send message. Please try again later.');
   }
 }
